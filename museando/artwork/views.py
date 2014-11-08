@@ -88,3 +88,83 @@ class ArtworkDeleteView(LoginRequiredMixin, DeleteView):
     model = Artwork
     success_url = reverse_lazy('artwork_app:artwork-list')
     template_name = 'artwork/delete.html'
+
+
+def register_artwork(request):
+
+    name = request.POST['name']
+    uid = request.POST['uid']
+    description = request.POST['description']
+    author = request.POST['author']
+    style = request.POST['style']
+    image = request.FILES.get('image')
+
+    try:
+        museum = Museum.objects.get(user=request.user.id)
+        artwork = Artwork.objects.create(
+            museum=museum,
+            name=name,
+            uid=uid,
+            description=description,
+            author=author,
+            style=style,
+            image=image,
+        )
+        return artwork
+    except Exception, e:
+        pass
+
+
+@csrf_protect
+@login_required(login_url=settings.LOGIN_URL, redirect_field_name='next')
+def artwork_create(request):
+    if request.method == "POST":
+        artwork = register_artwork(request)
+        if artwork:
+            return HttpResponseRedirect(reverse('artwork_app:artwork-list'))
+
+    return render_to_response(
+        'artwork/create.html',
+        context_instance=RequestContext(request),
+    )
+
+
+def update_artwork(request, pk):
+    name = request.POST['name']
+    uid = request.POST['uid']
+    description = request.POST['description']
+    author = request.POST['author']
+    style = request.POST['style']
+    image = request.FILES.get('image')
+
+    artwork = get_object_or_404(Artwork, pk=pk)
+
+    artwork.name = name
+    artwork.uid = uid
+    artwork.description = description
+    artwork.author = author
+    artwork.style = style
+    artwork.image = image
+    artwork.save()
+    return artwork
+
+
+@csrf_protect
+@login_required(login_url=settings.LOGIN_URL, redirect_field_name='next')
+def artwork_update(request, pk):
+    artwork = get_object_or_404(Artwork, pk=pk)
+
+    ctx = {
+        'artwork': artwork,
+    }
+
+    if request.method == "POST":
+        medicine = update_artwork(request, pk)
+        if medicine:
+            return HttpResponseRedirect(reverse('artwork_app:artwork-list'))
+
+    return render_to_response(
+        'artwork/update.html',
+        ctx,
+        context_instance=RequestContext(request),
+    )

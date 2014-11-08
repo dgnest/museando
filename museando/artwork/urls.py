@@ -1,10 +1,12 @@
 from django.conf.urls import patterns, url
 from .views import artwork_list, ArtworkDetailView, ArtworkDeleteView
+from .views import artwork_create, artwork_update
 
 
 urlpatterns = patterns(
     '',
     url(r'^$', artwork_list, name='artwork-list'),
+    url(r'^create/$', artwork_create, name='artwork-create'),
     url(
         r'^(?P<pk>[\w]+)/$',
         ArtworkDetailView.as_view(),
@@ -15,5 +17,9 @@ urlpatterns = patterns(
         ArtworkDeleteView.as_view(),
         name='artwork-delete',
     ),
-    # url(r'^update/$', museum_update, name='museum-update'),
+    url(
+        r'^update/(?P<pk>[\w]+)/$',
+        artwork_update,
+        name='artwork-update',
+    ),
 )

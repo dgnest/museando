@@ -29,14 +29,14 @@
     <tbody>
       {% for artwork in artworks %}
         <tr>
-          <td><a href="{% url 'artwork_app:artwork-list' %}">{{ artwork.name|title }}</a></td>
+          <td><a href="{% url 'artwork_app:artwork-detail' artwork.id %}">{{ artwork.name|title }}</a></td>
           <td>{{ artwork.uid }}</td>
           <td>{{ artwork.author|title }}</td>
           <td>
             <a href="{% url 'artwork_app:artwork-detail' artwork.id %}"><i class="fa fa-file-text"></i></a>
           </td>
           <td>
-            <a href=" "><i class="fa fa-pencil-square-o"></i></a>
+            <a href="{% url 'artwork_app:artwork-update' artwork.id %}"><i class="fa fa-pencil-square-o"></i></a>
           </td>
         </tr>
       {% endfor %}
@@ -47,7 +47,7 @@
 {% if museum.is_active %}
 <article class="panel-body">
 <p>
-  <a href=" " class="btn btn-success btn-block">Agregar Obra de Arte</a>
+  <a href="{% url 'artwork_app:artwork-create' %}" class="btn btn-success btn-block">Agregar Obra de Arte</a>
 </p>
 </article>
 {% endif %}

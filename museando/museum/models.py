@@ -25,6 +25,7 @@ class Museum(models.Model):
     )
     uid = models.CharField(
         max_length=32,
+        blank=True,
     )
     name = models.CharField(
         max_length=450,

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">
+      Crear Obra de Arte <i class="fa fa-shield"></i>
+    </h1>
+  </div>
+
+  <article class="panel-body">
+    <form action="" method="post" role="form" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input name="name" id="name" type="text" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="uid">UID</label>
+        <input name="uid" id="uid" type="text" class="form-control" required>
+      </div>
+
+      <label for="description">Descripción</label>
+      <textarea required rows="3" name="description" id="description" type="text" class="form-control" required></textarea>
+
+      <div class="form-group">
+        <label for="author">Autor</label>
+        <input name="author" id="author" type="text" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="style">Estilo</label>
+        <input name="style" id="style" type="text" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="image">Imagen</label>
+        <input name="image" id="image" type="file" class="form-control" required>
+      </div>
+
+      <p>
+        <button type="submit" class="btn btn-primary btn-block btn-lg"/>Actualizar Datos</button>
+      </p>
+    </form>
+    
+  </article>
+
+</div>
+
+{% endblock content %}
