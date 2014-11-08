@@ -32,6 +32,8 @@ urlpatterns = patterns(
             namespace='rest_framework'
         )
     ),
+    # Home app.
+    url(r'^', include('home.urls', namespace='home_app')),
 )
 
 

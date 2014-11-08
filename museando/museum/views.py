@@ -10,4 +10,5 @@ class MuseumViewSet(viewsets.ReadOnlyModelViewSet):
     filter_fields = (
         'name',
         'district',
+        'is_active',
     )

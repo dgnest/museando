@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+  <section class="center-block container-login">
+
+    <form role="form" method="POST" id="login">
+      
+      {% if message %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          {{ message }}
+        </div>
+      {% endif %}
+
+      <h1>Datos del Administrador</h1>
+      <hr>
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="inputUsername">Username</label>
+        <input name="username" type="text" class="form-control" id="inputUsername" placeholder="Ingrese usuario" required>
+      </div>
+      <div class="form-group">
+        <label for="inputFirstName">Nombres</label>
+        <input name="first_name" type="text" class="form-control" id="inputFirstName" placeholder="Ingrese usuario" required>
+      </div>
+      <div class="form-group">
+        <label for="inputLastName">Apellidos</label>
+        <input name="last_name" type="text" class="form-control" id="inputLastName" placeholder="Ingrese usuario" required>
+      </div>
+      <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Ingrese usuario" required>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword1">Contraseña</label>
+        <input name="password1" type="password" class="form-control" id="inputPassword1" placeholder="Ingrese contraseña" required>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword2">Confirmar Contraseña</label>
+        <input name="password2" type="password" class="form-control" id="inputPassword2" placeholder="Confirmar contraseña" required>
+      </div>
+      <h1>Datos del Museo</h1>
+      <hr>
+      <div class="form-group">
+        <label for="inputName">Nombre</label>
+        <input name="name" type="text" class="form-control" id="inputName" placeholder="Ingrese usuario" required>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Dirección</label>
+        <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Ingrese usuario" required>
+      </div>
+
+      <button type="submit" id="sign-up-btn" class="btn btn btn-danger">Registrar Museo</button>
+      <a href="{% url 'home_app:login' %}" id="login-btn" class="btn btn btn-primary">Ingresar</a>
+    </form>
+
+  </section>
+{% endblock content %}

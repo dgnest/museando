@@ -32,6 +32,7 @@ INSTALLED_APPS = (
     'museum',
     'artwork',
     'expose_the_user',
+    'home',
 )
 
 # REST framework API configuration
@@ -163,3 +164,7 @@ TEMPLATE_DIRS = (
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
+
+# Default Images
+DEFAULT_MUSEUM_PROFILE_IMAGE = MEDIA_URL + "default_profile_museum.png"
+DEFAULT_MUSEUM_LIST_IMAGE = MEDIA_URL + "default_lists_museum.png"

@@ -19,6 +19,10 @@ def upload_photo_to(self, filename):
 
 
 class Museum(models.Model):
+    user = models.OneToOneField(
+        User,
+        verbose_name=_('user'),
+    )
     name = models.CharField(
         max_length=450,
     )
@@ -27,15 +31,18 @@ class Museum(models.Model):
     )
     district = models.CharField(
         max_length=50,
+        blank=True,
     )
     address = models.CharField(
         max_length=200,
     )
     schedule = models.CharField(
         max_length=100,
+        blank=True,
     )
     price = models.CharField(
         max_length=100,
+        blank=True,
     )
     image_profile = ProcessedImageField(
         upload_to=upload_photo_to,
@@ -44,6 +51,7 @@ class Museum(models.Model):
         ],
         format='PNG',
         verbose_name=_('image profile'),
+        blank=True,
     )
     image_list = ProcessedImageField(
         upload_to=upload_photo_to,
@@ -52,15 +60,22 @@ class Museum(models.Model):
         ],
         format='PNG',
         verbose_name=_('image list'),
+        blank=True,
     )
 
     def _get_image_profile(self):
-        return str(self.image_profile.url)
+        try:
+            return str(self.image_profile.url)
+        except:
+            return settings.DEFAULT_MUSEUM_PROFILE_IMAGE
 
     image_profile_url = property(_get_image_profile)
 
     def _get_image_list(self):
-        return str(self.image_list.url)
+        try:
+            return str(self.image_list.url)
+        except:
+            return settings.DEFAULT_MUSEUM_LIST_IMAGE
 
     image_list_url = property(_get_image_list)
 
@@ -75,6 +90,9 @@ class Museum(models.Model):
     website = models.URLField(
         max_length=400,
         blank=True,
+    )
+    is_active = models.BooleanField(
+        default=False,
     )
 
     def __unicode__(self):

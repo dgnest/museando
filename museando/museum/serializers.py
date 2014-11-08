@@ -18,6 +18,7 @@ class MuseumSerializer(serializers.ModelSerializer):
         model = Museum
         fields = (
             'id',
+            'user',
             'name',
             'description',
             'district',
@@ -31,4 +32,5 @@ class MuseumSerializer(serializers.ModelSerializer):
             'telephone',
             'email',
             'website',
+            'is_active',
         )
