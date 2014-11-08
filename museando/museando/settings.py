@@ -15,9 +15,12 @@ TEMPLATE_DEBUG = DEBUG
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
 
 
+GRAPPELLI_ADMIN_TITLE = 'MUSEANDO'
+
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
