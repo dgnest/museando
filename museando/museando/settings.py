@@ -168,3 +168,6 @@ MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 # Default Images
 DEFAULT_MUSEUM_PROFILE_IMAGE = MEDIA_URL + "default_profile_museum.png"
 DEFAULT_MUSEUM_LIST_IMAGE = MEDIA_URL + "default_lists_museum.png"
+
+# Redirect URLs
+LOGIN_URL = 'home_app:login'

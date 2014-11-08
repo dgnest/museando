@@ -19,6 +19,7 @@ class MuseumSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'user',
+            'uid',
             'name',
             'description',
             'district',

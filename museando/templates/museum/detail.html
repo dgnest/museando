@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+{% if museum.is_active %}
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">
+      Detalle del Museo {{ museum.name|title }} <i class="fa fa-university"></i>
+    </h1>
+  </div>
+
+  <article class="panel-body">
+
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input name="name" id="name" type="text" value="{{ museum.name }}" class="form-control" readonly>
+    </div>
+    <label for="description">Descripción</label>
+    <textarea rows="3" name="description" id="description" type="text" class="form-control" readonly>{{ museum.description }}</textarea>
+    <div class="form-group">
+      <label for="district">Distrito</label>
+      <input name="district" id="district" type="text" value="{{ museum.district }}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+      <label for="address">Dirección</label>
+      <input name="address" id="address" type="text" value="{{ museum.address }}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+      <label for="schedule">Horario</label>
+      <input name="schedule" id="schedule" type="text" value="{{ museum.schedule }}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+      <label for="price">Precio</label>
+      <input name="price" id="price" type="text" value="{{ museum.price }}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+      <label for="image_profile">Imagen de Perfil</label>
+      <img src="{{ museum.image_profile_url }}">
+    </div>
+    <div class="form-group">
+      <label for="image_list">Imagen de Lista</label>
+      <img src="{{ museum.image_list_url }}">
+    </div>
+    <div class="form-group">
+      <label for="price">Precio</label>
+      <input name="price" id="price" type="text" value="{{ museum.price }}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+      <label for="telephone">Teléfono</label>
+      <input name="telephone" id="telephone" type="text" value="{{ museum.telephone }}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input name="email" id="email" type="email" value="{{ museum.email }}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+      <label for="website">Web</label>
+      <input name="website" id="website" type="url" value="{{ museum.website }}" class="form-control" readonly>
+    </div>
+
+  </article>
+
+</div>
+
+<p>
+  <a href="{% url 'museum_app:museum-update' %}" class="btn btn-primary btn-block btn-lg"> Actualizar Datos </a>
+</p>
+{% else %}
+<h1>No presenta museos activos</h1>
+{% endif %}
+
+{% endblock content %}

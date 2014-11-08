@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">
+      Actualizar {{ museum.name|title }} <i class="fa fa-university"></i>
+    </h1>
+  </div>
+
+  <article class="panel-body">
+    <form action="" method="post" role="form" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input name="name" id="name" type="text" value="{{ museum.name }}" class="form-control">
+      </div>
+
+      <label for="description">Descripción</label>
+      <textarea rows="3" name="description" id="description" type="text" class="form-control" required>{{ museum.description }}</textarea>
+
+      <div class="form-group">
+        <label for="district">Distrito</label>
+        <input name="district" id="district" type="text" value="{{ museum.district }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="address">Dirección</label>
+        <input name="address" id="address" type="text" value="{{ museum.address }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="schedule">Horario</label>
+        <input name="schedule" id="schedule" type="text" value="{{ museum.schedule }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="price">Precio</label>
+        <input name="price" id="price" type="text" value="{{ museum.price }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="image_profile">Imagen de Perfil</label>
+        <input name="image_profile" id="image_profile" type="file" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="image_list">Imagen de Lista</label>
+        <input name="image_list" id="image_list" type="file" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="telephone">Teléfono</label>
+        <input name="telephone" id="telephone" type="text" value="{{ museum.telephone }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input name="email" id="email" type="email" value="{{ museum.email }}" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="website">Web</label>
+        <input name="website" id="website" type="url" value="{{ museum.website }}" class="form-control">
+      </div>
+
+      <p>
+        <button type="submit" class="btn btn-success btn-block"/>Modificar</button>
+      </p>
+    </form>
+    
+  </article>
+
+</div>
+
+<p>
+  <a href="" class="btn btn-primary btn-block btn-lg"> Actualizar Datos </a>
+</p>
+{% endblock content %}

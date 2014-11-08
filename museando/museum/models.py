@@ -23,6 +23,9 @@ class Museum(models.Model):
         User,
         verbose_name=_('user'),
     )
+    uid = models.CharField(
+        max_length=32,
+    )
     name = models.CharField(
         max_length=450,
     )
