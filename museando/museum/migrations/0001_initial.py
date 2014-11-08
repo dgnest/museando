@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
             name='Museum',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('uid', models.CharField(max_length=32)),
                 ('name', models.CharField(max_length=450)),
                 ('description', models.TextField(blank=True)),
                 ('district', models.CharField(max_length=50, blank=True)),

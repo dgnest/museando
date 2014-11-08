@@ -26,7 +26,10 @@ class MuseumViewSet(viewsets.ReadOnlyModelViewSet):
 @csrf_protect
 @login_required(login_url=settings.LOGIN_URL, redirect_field_name='next')
 def museum_detail(request):
-    museum = Museum.objects.get(user=request.user.id)
+    try:
+        museum = Museum.objects.get(user=request.user.id)
+    except Exception, e:
+        museum = None
     ctx = {
         'museum': museum,
     }
@@ -45,9 +48,8 @@ def update_museum(request):
     address = request.POST['address']
     schedule = request.POST['schedule']
     price = request.POST['price']
-    import ipdb; ipdb.set_trace()
-    image_profile = request.POST['image_profile']
-    image_list = request.get['image_list']
+    image_profile = request.FILES['image_profile']
+    image_list = request.FILES['image_list']
     telephone = request.POST['telephone']
     email = request.POST['email']
     website = request.POST['website']
