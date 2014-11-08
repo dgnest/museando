@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">
+      {{ object.name|title }} <i class="fa fa-shield"></i>
+    </h1>
+  </div>
+
+  <article class="panel-body">
+    {% if object.uid %}
+      <p>UID: <strong>{{ object.uid }}</strong></p>
+    {% endif %}
+    
+    {% if object.description %}
+      <p>Descripción: <strong>{{ object.description }}</strong></p>
+    {% endif %}
+    
+    {% if object.author %}
+      <p>Tipo: <strong>{{ object.author|title }}</strong></p>
+    {% endif %}
+
+    {% if object.style %}
+      <p>Estilo: <strong>{{ object.style }}</strong></p>
+    {% endif %}
+
+    {% if object.image_url %}
+    <figure>
+      <img src="{{ object.image_url }}">
+    </figure>
+    {% endif %}
+ 
+    <p>
+      <a href="{% url 'artwork_app:artwork-list' %}" class="btn btn-primary btn-block">Volver a la Lista de Obras de Arte</a>
+    </p>
+    <p>
+      <a href="" class="btn btn-primary btn-block">Modificar Obra de Arte</a>
+    </p>
+    <p>
+      <a href="{% url 'artwork_app:artwork-delete' artwork.id %}" class="btn btn-primary btn-block">Eliminar Obra de Arte</a>
+    </p>
+  </article>
+
+</div>
+
+{% endblock content %}

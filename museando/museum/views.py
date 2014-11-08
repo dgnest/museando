@@ -48,8 +48,8 @@ def update_museum(request):
     address = request.POST['address']
     schedule = request.POST['schedule']
     price = request.POST['price']
-    image_profile = request.FILES['image_profile']
-    image_list = request.FILES['image_list']
+    image_profile = request.FILES.get('image_profile')
+    image_list = request.FILES.get('image_list')
     telephone = request.POST['telephone']
     email = request.POST['email']
     website = request.POST['website']

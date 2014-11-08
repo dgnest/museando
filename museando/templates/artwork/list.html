@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+{% if not artworks %}
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    Aún no hay obras de arte!
+  </div>
+{% else %}
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">Lista de Obras de Arte <i class="fa fa-shield"></i></h1> 
+  </div>
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>        
+        <th>UID</th>        
+        <th>Autor</th>        
+        <th>Detalle</th>        
+        <th>Modificar</th>        
+      </tr>
+    </thead>
+    <tbody>
+      {% for artwork in artworks %}
+        <tr>
+          <td><a href="{% url 'artwork_app:artwork-list' %}">{{ artwork.name|title }}</a></td>
+          <td>{{ artwork.uid }}</td>
+          <td>{{ artwork.author|title }}</td>
+          <td>
+            <a href="{% url 'artwork_app:artwork-detail' artwork.id %}"><i class="fa fa-file-text"></i></a>
+          </td>
+          <td>
+            <a href=" "><i class="fa fa-pencil-square-o"></i></a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+  
+{% if museum.is_active %}
+<article class="panel-body">
+<p>
+  <a href=" " class="btn btn-success btn-block">Agregar Obra de Arte</a>
+</p>
+</article>
+{% endif %}
+
+
+</div>
+
+{% endblock content %}

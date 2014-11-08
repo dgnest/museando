@@ -36,6 +36,8 @@ urlpatterns = patterns(
     url(r'^', include('home.urls', namespace='home_app')),
     # Museum app.
     url(r'^museum/', include('museum.urls', namespace='museum_app')),
+    # Artwork app.
+    url(r'^artwork/', include('artwork.urls', namespace='artwork_app')),
 )
 
 
