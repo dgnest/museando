@@ -17,6 +17,7 @@ class MuseumSerializer(serializers.ModelSerializer):
     class Meta:
         model = Museum
         fields = (
+            'id',
             'name',
             'description',
             'district',

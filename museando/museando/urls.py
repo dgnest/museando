@@ -4,10 +4,12 @@ from rest_framework import routers
 from django.contrib import admin
 
 from museum.views import MuseumViewSet
+from artwork.views import ArtworkViewSet
 
 
 router = routers.DefaultRouter()
 router.register(r'museums', MuseumViewSet)
+router.register(r'artworks', ArtworkViewSet)
 
 urlpatterns = patterns(
     '',

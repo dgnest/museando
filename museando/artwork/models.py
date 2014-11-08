@@ -30,9 +30,6 @@ class Artwork(models.Model):
         max_length=32,
         blank=True,
     )
-    title = models.CharField(
-        max_length=200,
-    )
     description = models.TextField(
         blank=True,
     )
