@@ -5,11 +5,13 @@ from django.contrib import admin
 
 from museum.views import MuseumViewSet
 from artwork.views import ArtworkViewSet
+from expose_the_user.views import UserViewSet
 
 
 router = routers.DefaultRouter()
 router.register(r'museums', MuseumViewSet)
 router.register(r'artworks', ArtworkViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = patterns(
     '',

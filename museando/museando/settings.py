@@ -31,6 +31,7 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'museum',
     'artwork',
+    'expose_the_user',
 )
 
 # REST framework API configuration
