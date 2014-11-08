@@ -22,7 +22,9 @@ class Museum(models.Model):
     name = models.CharField(
         max_length=450,
     )
-    description = models.TextField()
+    description = models.TextField(
+        blank=True,
+    )
     district = models.CharField(
         max_length=50,
     )
@@ -38,7 +40,7 @@ class Museum(models.Model):
     image_profile = ProcessedImageField(
         upload_to=upload_photo_to,
         processors=[
-            ResizeToFill(width=500, height=200),
+            ResizeToFill(width=628, height=420),
         ],
         format='PNG',
         verbose_name=_('image profile'),
