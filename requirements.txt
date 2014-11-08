@@ -1,8 +1,12 @@
 Django==1.7.1
 Pillow==2.6.1
 dj-database-url==0.3.0
+django-appconf==0.6
 django-grappelli==2.6.2
+django-imagekit==3.2.4
+djangorestframework==2.4.4
 ipdb==0.8
 ipython==2.3.0
 pilkit==1.1.12
 pytz==2014.9
+six==1.8.0
