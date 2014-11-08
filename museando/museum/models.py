@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-from imagekit.processors import ResizeToFit, ResizeToFill
+from imagekit.processors import ResizeToFill
 from imagekit.models import ProcessedImageField, ImageSpecField
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
@@ -10,9 +10,9 @@ from django.utils.translation import ugettext_lazy as _
 
 def upload_photo_to(self, filename):
     url = (
-        "museums/%(id)s/%(filename)s"
+        "museums/%(name)s/%(filename)s"
     ) % {
-        "id": self.id,
+        "name": self.name,
         "filename": filename,
     }
     return url
@@ -20,14 +20,20 @@ def upload_photo_to(self, filename):
 
 class Museum(models.Model):
     name = models.CharField(
-        max_length=450
+        max_length=450,
     )
     description = models.TextField()
     district = models.CharField(
-        max_length=50
+        max_length=50,
+    )
+    address = models.CharField(
+        max_length=200,
     )
     schedule = models.CharField(
-        max_length=100
+        max_length=100,
+    )
+    price = models.CharField(
+        max_length=100,
     )
     image_profile = ProcessedImageField(
         upload_to=upload_photo_to,
@@ -55,6 +61,19 @@ class Museum(models.Model):
         return str(self.image_list.url)
 
     image_list_url = property(_get_image_list)
+
+    telephone = models.CharField(
+        max_length=100,
+        blank=True,
+    )
+    email = models.EmailField(
+        max_length=100,
+        blank=True,
+    )
+    website = models.URLField(
+        max_length=400,
+        blank=True,
+    )
 
     def __unicode__(self):
         return self.name
