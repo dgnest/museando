@@ -22,6 +22,8 @@ class Museum(models.Model):
     user = models.OneToOneField(
         User,
         verbose_name=_('user'),
+        blank=True,
+        null=True,
     )
     uid = models.CharField(
         max_length=32,

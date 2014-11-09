@@ -21,7 +21,7 @@
     {% endif %}
     
     {% if object.author %}
-      <p>Tipo: <strong>{{ object.author|title }}</strong></p>
+      <p>Autor: <strong>{{ object.author|title }}</strong></p>
     {% endif %}
 
     {% if object.style %}
@@ -30,15 +30,16 @@
 
     {% if object.image_url %}
     <figure>
-      <img src="{{ object.image_url }}">
+      <img src="{{ object.image_url }}" class="img-responsive center-block">
     </figure>
+    <br><br>
     {% endif %}
  
     <p>
       <a href="{% url 'artwork_app:artwork-list' %}" class="btn btn-primary btn-block">Volver a la Lista de Obras de Arte</a>
     </p>
     <p>
-      <a href="" class="btn btn-primary btn-block">Modificar Obra de Arte</a>
+      <a href="{% url 'artwork_app:artwork-update' object.id %}" class="btn btn-primary btn-block">Modificar Obra de Arte</a>
     </p>
     <p>
       <a href="{% url 'artwork_app:artwork-delete' artwork.id %}" class="btn btn-primary btn-block">Eliminar Obra de Arte</a>

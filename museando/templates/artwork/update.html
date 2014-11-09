@@ -21,7 +21,7 @@
 
       <div class="form-group">
         <label for="uid">UID</label>
-        <input name="uid" id="uid" type="text" class="form-control" value="{{ artwork.uid }}" required>
+        <input name="uid" id="uid" type="text" class="form-control" value="{{ artwork.uid }}">
       </div>
 
       <label for="description">Descripción</label>
@@ -45,8 +45,11 @@
       <p>
         <button type="submit" class="btn btn-primary btn-block btn-lg"/>Actualizar Datos</button>
       </p>
+      <p>
+        <a href="{% url 'artwork_app:artwork-list' %}" class="btn btn-success btn-block btn-lg">Volver a la lista de Obras de Arte</a>
+    </p>
     </form>
-    
+
   </article>
 
 </div>

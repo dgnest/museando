@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(max_length=100, blank=True)),
                 ('website', models.URLField(max_length=400, blank=True)),
                 ('is_active', models.BooleanField(default=False)),
-                ('user', models.OneToOneField(verbose_name='user', to=settings.AUTH_USER_MODEL)),
+                ('user', models.OneToOneField(null=True, blank=True, to=settings.AUTH_USER_MODEL, verbose_name='user')),
             ],
             options={
                 'db_table': 'museum',
